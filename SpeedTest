@@ -1,0 +1,32 @@
+int led = 13;
+int pinP = 3;
+long randomDelay;
+boolean pressButton = false;
+int millSec;
+
+void setup() {
+  // put your setup code here, to run once:
+ pinMode(led, OUTPUT);
+ pinMode(pinP, INPUT);
+ randomSeed(analogRead(0));
+ Serial.begin(9600);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  
+  randomDelay = random(2000, 10000);
+  delay(randomDelay);
+  digitalWrite(led, HIGH);
+  
+    while(pressButton==false){
+        millSec = millSec + 1;
+        delay(1);
+        if(digitalRead(pinP)==1){
+          pressButton=true;
+          
+          };
+      }
+        digitalWrite(led, LOW);
+        Serial.println(millSec);
+}
